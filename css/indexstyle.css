@@ -1,0 +1,14 @@
+.login {
+	width: 500px;
+	margin:0 auto;
+	border: thick solid orange;
+	padding: 10px;
+	}
+
+.register {
+	width: 500px;
+	margin:0 auto;
+	margin-top:10px;
+	border: thick solid orange;
+	padding: 10px;
+	}

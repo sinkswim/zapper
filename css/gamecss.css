@@ -1,0 +1,32 @@
+#gamewindow {
+	width: 700px;
+	height: 450px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	left: 0;
+	top: 0;
+	cursor: url(../media/sniper2.cur), crosshair;
+	overflow: hidden;
+	color: yellow;
+	font-size: x-large;
+	font-weight: bold;
+	}
+
+#livello {
+	position: absolute;
+	top: 395px;
+	left: 35px;
+	}
+
+#punteggio {
+	position: absolute;
+	top: 395px;
+	left: 280px;
+	}
+
+#uccisioni {
+	position: absolute;
+	top: 395px;
+	left: 550px;
+	}
