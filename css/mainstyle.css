@@ -1,0 +1,48 @@
+body {  
+	background-color: rgb(56, 24, 101);
+	color: rgb(224, 92, 0);
+	font-family: Verdana, Helvetica, Arial, sans-serif ;
+	font-size: large;
+	cursor: url(../media/orange.cur), auto;
+	text-align: center;
+	}
+		
+.logo {
+	width: 400px;
+	height: 150px;
+	}		
+		
+.linkbar {
+	width: 700px;
+	margin: 0 auto;
+	padding: 10px;
+	font-size: xx-large;
+	}		
+
+.creativecommons {			/*solo in about.html*/
+		font-size:x-small;
+		}
+
+a {
+	font-weight: bold; 
+	}	
+
+a:link {
+	color: rgb(16, 88, 191);			 
+	text-decoration:none;
+	}
+
+a:visited {
+	color: rgb(16, 88, 191);
+	text-decoration:none;
+	}
+
+a:hover {
+	color: rgb(59, 154, 15);
+	text-decoration:underline;
+	}
+	
+a:active {
+	color: red;
+	text-decoration:underline;
+	}
