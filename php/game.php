@@ -6,7 +6,7 @@
 
 <head>
 	<?php if(!isset($_SESSION['username'])) 
-		 		 header('Location: ../index.html');  ?> 
+		 		 header('Location: ../index.php');  ?> 
 
 	<title> Play Zapper! </title>
 	<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
@@ -18,8 +18,7 @@
 	<script type="text/javascript" src='../js/gamelogic.js'></script>
 </head>
 
-<!-- <body onload="inizializza();"> -->
-<body>
+<body onload="inizializza();">
 	<div> <img class="logo" src="../media/zapper_logo.png"alt="Zapper Logo"> </div>
 	<div>
 	<table class="linkbar">
@@ -29,12 +28,11 @@
 	</table>
 	</div>
 
-	<!-- <div id="gamewindow"></div> -->
-	<div><p>Hey</p></div>
+	<div id="gamewindow"></div>
 
 	<div>
 		<input type="button" value="Log Out" onClick="window.location='logout.php'">
-		<input type="button" value="Controlla classifica" onClick="document.location.href='punteggi.php'">
+		<input type="button" value="Check leaderboard" onClick="document.location.href='leaderboard.php'">
 	</div>
 
 </body>

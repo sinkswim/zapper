@@ -7,18 +7,18 @@
 	include("connect.php");
 	session_start();
 	if(!isset($_SESSION['username'])) 
-        header('Location: ../index.php');
-	include 'header.php';
+        header("Location: ../index.php");
+	include "header.php";
 
 
 	$query = "SELECT record FROM users WHERE username='$_SESSION[username]'";
-	$result = mysql_query($query);
-	$ret = mysql_fetch_array($result);
-	echo "<h1>Il tuo record e': $ret[0] </h1>";
+	$result = $mysqli_connection->query($query);
+	$row = $result -> fetch_array(MYSQLI_NUM);
+	echo "<h1>Your personal record is: $row[0] </h1>";
 	$query = "SELECT username,record FROM users ORDER BY record DESC LIMIT 5";
-	$result = mysql_query($query);
-	echo "<h2>La TOP 5 e': </h2><p>";
-	while($ret = mysql_fetch_assoc($result)){
+	$result = $mysqli_connection->query($query);
+	echo "<h2>The top 5 leaderboard is: </h2><p>";
+	while($ret = mysqli_fetch_assoc($result)){
 						 echo "<div>".$ret['username']." ";
 						 echo $ret['record']."</div>";
 						 }
