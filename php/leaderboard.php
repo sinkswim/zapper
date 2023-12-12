@@ -14,15 +14,16 @@
 	$query = "SELECT record FROM users WHERE username='$_SESSION[username]'";
 	$result = $mysqli_connection->query($query);
 	$row = $result -> fetch_array(MYSQLI_NUM);
-	echo "<h1>Your personal record is: $row[0] </h1>";
 	$query = "SELECT username,record FROM users ORDER BY record DESC LIMIT 5";
 	$result = $mysqli_connection->query($query);
 	echo "<h2>The top 5 leaderboard is: </h2><p>";
 	while($ret = mysqli_fetch_assoc($result)){
-						 echo "<div>".$ret['username']." ";
-						 echo $ret['record']."</div>";
-						 }
+		echo "<div>".$ret['username']." ";
+		echo $ret['record']."</div>";
+	}
 	echo "</p>";
+	echo "<h2>Your personal record is: $row[0] </h2>";
+
 ?>
 
 	<div>

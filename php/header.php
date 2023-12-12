@@ -1,5 +1,5 @@
 <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
-<meta name="author" content="Robert Margelli">
+<meta name="author" content="sinkswim">
 <meta name="keywords" content="zapper,gioco,sparatutto,javascript">
 <meta name="description" content="Zapper: un gioco sparatutto basato su Javascript">
 <link rel="stylesheet" type="text/css" href="../css/mainstyle.css">

@@ -11,22 +11,22 @@
 	color: yellow;
 	font-size: x-large;
 	font-weight: bold;
-	}
+}
 
-#livello {
+#level {
 	position: absolute;
 	top: 395px;
 	left: 35px;
-	}
+}
 
-#punteggio {
+#score {
 	position: absolute;
 	top: 395px;
 	left: 280px;
-	}
+}
 
-#uccisioni {
+#kills {
 	position: absolute;
 	top: 395px;
 	left: 550px;
-	}
+}

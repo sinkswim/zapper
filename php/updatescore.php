@@ -2,15 +2,20 @@
 	include 'connect.php';
 	session_start();
 
+	echo "<script type='text/javascript'>alert('in updatescore.php');</script>";
+
 	$score = $_POST['score'];
 	$query = "SELECT record FROM users WHERE username='$_SESSION[username]'";
-	$result = mysql_query($query);
+	$result = $mysqli_connection->query($query);
 	$ret = mysql_fetch_array($result);
-	if($score > $ret[0]){
+
+	echo $row[0];
+
+	if($score > $row[0]){
 		echo 'Complimenti hai superato il tuo record!';
-		mysql_query("UPDATE users SET record=$score WHERE username='$_SESSION[username]'") or die(mysql_error());
+		$mysqli_connection->query("UPDATE users SET record=$score WHERE username='$_SESSION[username]'");
 		}
 	else{
 		echo 'Peccato, non hai superato il tuo record.. ritenta!';
-		}
+	}
 ?>

@@ -1,4 +1,4 @@
-//variabili globali
+// Global variables
 var pixel = "px";	
 var altDiv = 450, largDiv = 700;
 var grafica;
@@ -11,131 +11,133 @@ function inizializza(){
 }
 
 function avviaGioco(){
-				 grafica = new Grafica();
-				 grafica.avvia();
+	grafica = new Grafica();
+	grafica.avvia();
 }
 
 function Grafica(){		//livello logico di grafica
-				 this.gioco = new Gioco();
+	this.gioco = new Gioco();
 
-				 this.divGioco = document.getElementById("gamewindow");
-				 this.divGioco.removeAttribute('onclick');
-				
-				 this.bground = new Array();		//array degli sfondi di gioco
-				 for(var i = 1; i < 9; i++){
-				 		 this.bground[i] = new String('../media/backgrounds/lev'+i+'.png');	
-				 }
-				 this.divGioco.setAttribute('style',"background:url('"+ this.bground[this.gioco.level] +"')");
+	this.divGioco = document.getElementById('gamewindow');
+	this.divGioco.removeAttribute('onclick');
+
+	this.bground = new Array();		//array degli sfondi di gioco
+	for(var i = 1; i < 9; i++){
+			this.bground[i] = new String('../media/backgrounds/lev'+i+'.png');	
+	}
+	this.divGioco.setAttribute('style',"background:url('"+ this.bground[this.gioco.level] +"')");
 
 
-				 //creazione scritte di gioco
-	 			 this.levelPar = document.createElement('p');
-	 			 this.scorePar = document.createElement('p');
-	 			 this.killsPar = document.createElement('p');
-	 			 this.levelPar.id = 'livello';
-	 			 this.scorePar.id = 'punteggio';
-	 			 this.killsPar.id = 'uccisioni';
-	 			 this.levelText = document.createTextNode('LEVEL: 1');
-	 			 this.scoreText = document.createTextNode('SCORE: 0');
-	 			 this.killsText = document.createTextNode('KILLS: 0');
-	 			 this.levelPar.appendChild(this.levelText);
-	 			 this.scorePar.appendChild(this.scoreText);
-	 			 this.killsPar.appendChild(this.killsText);
-	 			 this.divGioco.appendChild(this.levelPar);
-	 			 this.divGioco.appendChild(this.scorePar);
-	 			 this.divGioco.appendChild(this.killsPar);
-				 
-				 this.timer = null;	//timer di rendering
-				 this.tempodead = null;	//timer sul rendering nemici morti
-				 
-				 //numero di chiamate di render() prima di visualizzare il nemico attesaNemico/tempoRender
-				 this.numChiamate = 0;
-				 this.contaChiamate = 0;
-				 this.contaEnemyInMov = 0;
-				 //tempo di ritardo tra un enemy e un altro e' tempoRender (fisso) + tempo casuale
-				 this.maxIntervNextEnemy = [5000, 4000, 2000, 2000, 2000, 2000, 1200]; 
-				 this.tempoRender = 50;
-				 this.passo = [10, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
-				 this.tempoExplode = 165;
-				 
-				 for (var i=0; i<this.gioco.numEnemy; i++){		//inserisci nello sfondo di gioco i nemici
-				 		 this.divGioco.appendChild(this.gioco.vetEnemy[i].imgDiv);
-				 }
-				 
-				 this.calcolaRitardoNextEnemy = calcolaRitardoNextEnemy;	//metodo calcolaRitardoNextEnemy()
-				 this.cambiaLivello = cambiaLivello;	//metodo cambiaLivello()
-				 this.avvia = avvia;	//metodo avvia()
-				 this.aggiornaPunti = aggiornaPunti; //metodo aggiornaPunti()
-				 this.gameover = gameover;	//metodo gameover()
-				 
+	//creazione scritte di gioco
+	this.levelPar = document.createElement('p');
+	this.scorePar = document.createElement('p');
+	this.killsPar = document.createElement('p');
+	this.levelPar.id = 'level';
+	this.scorePar.id = 'score';
+	this.killsPar.id = 'kills';
+	this.levelText = document.createTextNode('LEVEL: 1');
+	this.scoreText = document.createTextNode('SCORE: 0');
+	this.killsText = document.createTextNode('KILLS: 0');
+	this.levelPar.appendChild(this.levelText);
+	this.scorePar.appendChild(this.scoreText);
+	this.killsPar.appendChild(this.killsText);
+	this.divGioco.appendChild(this.levelPar);
+	this.divGioco.appendChild(this.scorePar);
+	this.divGioco.appendChild(this.killsPar);
+	
+	this.timer = null;	//timer di rendering
+	this.tempodead = null;	//timer sul rendering nemici morti
+	
+	//numero di chiamate di render() prima di visualizzare il nemico attesaNemico/tempoRender
+	this.numChiamate = 0;
+	this.contaChiamate = 0;
+	this.contaEnemyInMov = 0;
+	//tempo di ritardo tra un enemy e un altro e' tempoRender (fisso) + tempo casuale
+	// this.maxIntervNextEnemy = [5000, 4000, 2000, 2000, 2000, 2000, 1200]; 
+	this.maxIntervNextEnemy = [2000, 4000, 2000, 2000, 2000, 2000, 1200]; 
+
+	this.tempoRender = 50;
+	//this.passo = [10, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
+	this.passo = [30, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
+	this.tempoExplode = 165;
+	
+	for (var i=0; i<this.gioco.numEnemy; i++){		//inserisci nello sfondo di gioco i nemici
+			this.divGioco.appendChild(this.gioco.vetEnemy[i].imgDiv);
+	}
+	
+	this.calcolaRitardoNextEnemy = calcolaRitardoNextEnemy;	//metodo calcolaRitardoNextEnemy()
+	this.cambiaLivello = cambiaLivello;	//metodo cambiaLivello()
+	this.avvia = avvia;	//metodo avvia()
+	this.aggiornaPunti = aggiornaPunti; //metodo aggiornaPunti()
+	this.gameover = gameover;	//metodo gameover()
 }
 
 function avvia(){
-				 this.timer = setInterval('render()', this.tempoRender);
-				 this.tempodead = setInterval('fall()', this.tempoExplode);
+	this.timer = setInterval('render()', this.tempoRender);
+	this.tempodead = setInterval('fall()', this.tempoExplode);
 }
 
 function Gioco(){	//livello logico di gioco vero e proprio
-				 this.level = 0; //0: welcome screen, 1 -> 7 livelli effettivi di gioco, 8 gameover
-				 this.numMaxLevel = 9; 
-				 this.score = 0;
-				 this.killed = 0;
-				 
-				 this.vetEnemy = null;
-				 this.numEnemy = 0;
-				 this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
-				 this.fuoriGioco = 0; //numero di nemici ormai fuori gioco
-				 
-				 this.nextLevel = nextLevel;	//metodo nextLevel()
-				 
-				 this.nextLevel();
+	this.level = 0; //0: welcome screen, 1 -> 7 livelli effettivi di gioco, 8 gameover
+	this.numMaxLevel = 8; 
+	this.score = 0;
+	this.killed = 0;
+	
+	this.vetEnemy = null;
+	this.numEnemy = 0;
+	this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
+	this.fuoriGioco = 0; //numero di nemici ormai fuori gioco
+	
+	this.nextLevel = nextLevel;	//metodo nextLevel()
+	
+	this.nextLevel();
 }
 
 function nextLevel(){
-				 this.level++;
-				 if(this.level == this.numMaxLevel - 1){	//finiti i livelli
-				 	grafica.gameover();
-				 }
-				 else{
-				 	this.killed = 0;
-				 	this.fuoriGioco = 0;
-				 	this.numEnemy = this.vetNumEnemy[this.level-1];
-					this.vetEnemy = new Array();
-					for (var i=0; i < this.numEnemy; i++){
-						this.vetEnemy[i] = new Enemy(i);	//passo un intero che verra impiegato per creare un id per ogni nemico
-						}
-					}
+	this.level++;
+	if(this.level == this.numMaxLevel) {	//finiti i livelli
+		grafica.gameover();
+	}
+	else{
+	this.killed = 0;
+	this.fuoriGioco = 0;
+	this.numEnemy = this.vetNumEnemy[this.level-1];
+	this.vetEnemy = new Array();
+	for (var i=0; i < this.numEnemy; i++){
+		this.vetEnemy[i] = new Enemy(i);	//passo un intero che verra impiegato per creare un id per ogni nemico
+		}
+	}
 }
 
 function Enemy(i){
-		         this.imgDiv = document.createElement('div');
-				 this.img = document.createElement('img');
-				 this.imgDiv.appendChild(this.img);
-				 this.img.src='../media/sprites/ufo/ufo0.png';
-				 this.img.alt = 'UFO';
-				 this.largEnemy = 46;
-				 this.altEnemy = 42;
-				 this.DX = (Math.round(Math.random()) == 1);	//stabilisce se parte da dx o da sx dello schermo di gioco
-				 this.img.style.left = !this.DX ? (-this.largEnemy + pixel) : (largDiv + pixel);	
-				 this.img.style.top = (Math.random()*(altDiv-this.altEnemy)) + pixel;	//da quale altezza parte
-				 var ran = Math.random();
-				 this.traiettoria = ( (ran < 0.3) ? -1 : (ran < 0.6) ? 0 : 1);	//il tipo di traiettoria che seguira
-				 this.img.style.visibility='hidden';
-				 this.img.style.position= 'absolute';
-				 this.img.onmousedown = hit;	//uccisione del nemico
-				 this.img.ondragstart = new Function('return false;'); //per evitare il dragging delle immagini
-				 this.isComparso = false;	//booleano per indicare se il nemico é mandato a schermo di gioco
+	this.imgDiv = document.createElement('div');
+	this.img = document.createElement('img');
+	this.imgDiv.appendChild(this.img);
+	this.img.src='../media/sprites/ufo/ufo0.png';
+	this.img.alt = 'UFO';
+	this.largEnemy = 46;
+	this.altEnemy = 42;
+	this.DX = (Math.round(Math.random()) == 1);	//stabilisce se parte da dx o da sx dello schermo di gioco
+	this.img.style.left = !this.DX ? (-this.largEnemy + pixel) : (largDiv + pixel);	
+	this.img.style.top = (Math.random()*(altDiv-this.altEnemy)) + pixel;	//da quale altezza parte
+	var ran = Math.random();
+	this.traiettoria = ( (ran < 0.3) ? -1 : (ran < 0.6) ? 0 : 1);	//il tipo di traiettoria che seguira
+	this.img.style.visibility='hidden';
+	this.img.style.position= 'absolute';
+	this.img.onmousedown = hit;	//uccisione del nemico
+	this.img.ondragstart = new Function('return false;'); //per evitare il dragging delle immagini
+	this.isComparso = false;	//booleano per indicare se il nemico é mandato a schermo di gioco
 
-				 this.dead = false;
-				 this.contaDead = 1;
-				 this.numDead = 8;
-				 this.scomparso = false;
-				 this.img.id = idUfo + i;	//mi serve in in hit() per ritornare all'Enemy colpito
+	this.dead = false;
+	this.contaDead = 1;
+	this.numDead = 8;
+	this.scomparso = false;
+	this.img.id = idUfo + i;	//mi serve in in hit() per ritornare all'Enemy colpito
 }
 
 function calcolaRitardoNextEnemy(){	//calcola il numero di chiamate a render() random da effettuare per un nemico
-				 this.numChiamate = Math.round(((Math.random() * this.maxIntervNextEnemy[this.gioco.level - 1]) + this.tempoRender )/ this.tempoRender);
-				 this.contaChiamate = 0;
+	this.numChiamate = Math.round(((Math.random() * this.maxIntervNextEnemy[this.gioco.level - 1]) + this.tempoRender )/ this.tempoRender);
+	this.contaChiamate = 0;
 }
 
 function render(){
@@ -183,14 +185,12 @@ function render(){
 						gioco.vetEnemy[i].img.style.visibility = 'hidden';
 						gioco.vetEnemy[i].isComparso = false;
 						gioco.fuoriGioco += 1;
-						}
+					}
 				}
-		}
-		
-		if(gioco.fuoriGioco == gioco.numEnemy){	//sono tutti fuori: e'giunto il momento di cambiare livello
-			cambiaLivello();
 			}
-							
+			if(gioco.fuoriGioco == gioco.numEnemy){	//sono tutti fuori: e'giunto il momento di cambiare livello
+				cambiaLivello();
+				}					
 		}
 	}
 }
@@ -262,7 +262,7 @@ function cambiaLivello(){ //resets, inizializzazioni da fare quando si cambia un
 				levelText.nodeValue = '';
 			}
 		}
-		else{
+		else{	// Player did not kill over 70% of the level's sprites
 			gameover();
 		}
 
@@ -281,54 +281,30 @@ function gameover(){
 	with(grafica){
 		levelText.nodeValue = '';
 		killsText.nodeValue = '';
-		divGioco.setAttribute('style',"background:url('"+ bground[gioco.numMaxLevel - 1] +"')");
-		ajaxHandler();	//se score supera il record attuale viene aggiornato il campo relativo nel DB
+		divGioco.setAttribute('style',"background:url('"+ bground[gioco.numMaxLevel] +"')");
+		ajaxHandler();	// Checks if it's a new score for the player and if so updates the user's score in the DB
 	}
 }
 
 
 //AJAX
 function ajaxHandler(){
-	var xmlHttp;
-	try{	
-		xmlHttp = new XMLHttpRequest();
-	}
-	catch(e){
-		try{
-			xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+	var xhttp = new XMLHttpRequest();
+	var textResp = document.createTextNode('');
+
+	grafica.divGioco.appendChild(textResp);
+
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) { // Operation completed and correct HTTP response
+			textResp.nodeValue = xhttp.responseText;
 		}
-		catch(e){
-			try{	
-				xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-			}
-			catch(e){
-				window.alert('Il tuo browser non supporta AJAX');
-				return;
-			}
-		}
-	}
-
-
-var textResp = document.createTextNode('');
-grafica.divGioco.appendChild(textResp);
-
-	xmlHttp.onreadystatechange = mostraVideo;  
-	function mostraVideo() { 
-     if (xmlHttp.readyState == 4) {  //operazione completata
-     	if (xmlHttp.status == 200) {  //HTTP response corretta
-     	textResp.nodeValue = xmlHttp.responseText;
-      	return;
-      	} 
-     else {  
-        window.alert('Errore di comunicazione con il server.');
-        return;
-      	}  
-      }  
-  	}  
+		else {  // <--- TODO getting a status response of 500 here
+			window.alert('Errore di comunicazione con il server: ' + this.status);
+		}  
+	};
 
   	var data = 'score=' + grafica.gioco.score;
-		xmlHttp.open('POST','updatescore.php',true);
-		xmlHttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-		xmlHttp.send(data);	
-
+	xhttp.open('POST', 'updatescore.php', true);
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhttp.send(data);
 }

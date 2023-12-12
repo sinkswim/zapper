@@ -10,19 +10,17 @@
 		
 	<form action="../php/register.php" method="post">
 		<div>
-			<h2>Registrati:</h2>
-			<div><p>User Name:
+			<h2>Sign up now:</h2>
+			<div><p>Username:
 			<input type="text" name="username" >
 			Password:
 			<input type="password" name="password" >
-			Ripeti Password:
+			Repeat Password:
 			<input type="password" name="repassword" ></p></div>
-			<input type="submit" value="Registrati!" >
+			<input type="submit" value="Sign up" >
 			
 			
-			<p> Username e password devono avere dimensione minima e massima di 5 e 12 caratteri 
-				ed essere espressi utilizzando solamente lettere e numeri.
-			</p>
+			<p> Username and password must be at least 5 and not over 12 characters in length. Only letters and numbers are permitted. </p>
 		</div>
 	</form>
 
