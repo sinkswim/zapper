@@ -6,15 +6,26 @@
 <?php
 	include 'header.php';
 	include ("connect.php");
-	echo ('<div>login line 9</div>');
-	if(mysql_num_rows(mysql_query("SELECT * FROM users WHERE username='".$_POST["username"]."' and password='".$_POST["password"]."'"))==1){
-		session_register("username"); //chiamata implicita senza parametri a session_start()
-		$_SESSION['username']=$_POST["username"]; //variabile di sessione
+
+	$sql = "SELECT * FROM users WHERE username='".$_POST["username"]."' and password='".$_POST["password"]."'";
+	$result = $mysqli_connection->query($sql);
+	
+	if ($result->num_rows == 1) {
+	  while($row = $result->fetch_assoc()) {
+		echo ('<div>OK</div>');
+		session_start();
+		$_SESSION["username"]=$_POST["username"]; //variabile di sessione
+		echo ('<div>OK after</div>');
+
 		header('Location: game.php'); 						//reindirizzamento al pagina di gioco
-		}
-	else 
-  		echo ('<div>Username o password errati, <a href="../index.php">riprova</a>!</div>');
+	  }
+	} else {
+		echo ('<div>Incorrect username or password, <a href="../index.php">try again</a>!</div>');
+	}
+	
+	$mysqli_connection->close();
 ?> 
 		
 </body>
 </html>
+

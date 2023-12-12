@@ -1,13 +1,16 @@
 <?php
 	$host = "localhost"; 
 	$user = "root"; 
-	$pass = ""; 
+	$password = ""; 
 	$db = "zapperdb";
-		echo ('<div>Connect line 6</div>');
-	//connessione:
-	$connect = mysql_connect($host,$user,$pass) or die(mysql_error());
-		echo ('<div>Connect line 9</div>');
-	//selezione db:
-	mysql_select_db($db,$connect) or die(mysql_error());
-		echo ('<div>Connect line 12</div>');
+
+	// Connect to MySQL Server and Zapper DB
+	$mysqli_connection = new mysqli($host,$user,$password, $db);
+
+	// Check connection
+	if ($mysqli_connection -> connect_error) {
+		echo "Failed to connect to MySQL: " . $mysqli_connection -> connect_error;
+		exit();
+  	}
+  
 ?>

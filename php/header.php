@@ -12,6 +12,3 @@
 			 <td> <a href="../html/about.html"> about </a> </td>
 		</tr>
 	</table>
-	<?php
-		echo ('<div>header line 15</div>');
-	?>

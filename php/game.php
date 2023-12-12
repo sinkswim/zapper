@@ -18,7 +18,8 @@
 	<script type="text/javascript" src='../js/gamelogic.js'></script>
 </head>
 
-<body onload="inizializza();">
+<!-- <body onload="inizializza();"> -->
+<body>
 	<div> <img class="logo" src="../media/zapper_logo.png"alt="Zapper Logo"> </div>
 	<div>
 	<table class="linkbar">
@@ -28,7 +29,8 @@
 	</table>
 	</div>
 
-	<div id="gamewindow"></div>
+	<!-- <div id="gamewindow"></div> -->
+	<div><p>Hey</p></div>
 
 	<div>
 		<input type="button" value="Log Out" onClick="window.location='logout.php'">
