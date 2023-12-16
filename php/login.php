@@ -12,18 +12,15 @@
 	
 	if ($result->num_rows == 1) {
 	  while($row = $result->fetch_assoc()) {
-		echo ('<div>OK</div>');
 		session_start();
 		$_SESSION["username"]=$_POST["username"]; //variabile di sessione
-		echo ('<div>OK after</div>');
-
 		header('Location: game.php'); 						//reindirizzamento al pagina di gioco
 	  }
 	} else {
 		echo ('<div>Incorrect username or password, <a href="../index.php">try again</a>!</div>');
 	}
 	
-	$mysqli_connection->close();
+	// $mysqli_connection->close();
 ?> 
 		
 </body>

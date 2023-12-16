@@ -58,7 +58,7 @@ function Grafica(){		//livello logico di grafica
 
 	this.tempoRender = 50;
 	//this.passo = [10, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
-	this.passo = [30, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
+	this.passo = [20, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
 	this.tempoExplode = 165;
 	
 	for (var i=0; i<this.gioco.numEnemy; i++){		//inserisci nello sfondo di gioco i nemici
@@ -85,7 +85,9 @@ function Gioco(){	//livello logico di gioco vero e proprio
 	
 	this.vetEnemy = null;
 	this.numEnemy = 0;
-	this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
+	// this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
+	this.vetNumEnemy = [2,10,15,20,25,30,35];	//quanti nemici per ogni livello
+
 	this.fuoriGioco = 0; //numero di nemici ormai fuori gioco
 	
 	this.nextLevel = nextLevel;	//metodo nextLevel()
@@ -295,12 +297,9 @@ function ajaxHandler(){
 	grafica.divGioco.appendChild(textResp);
 
 	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) { // Operation completed and correct HTTP response
-			textResp.nodeValue = xhttp.responseText;
+		if (this.readyState == 4 && this.status == 200) {
+			textResp.nodeValue = this.responseText;
 		}
-		else {  // <--- TODO getting a status response of 500 here
-			window.alert('Errore di comunicazione con il server: ' + this.status);
-		}  
 	};
 
   	var data = 'score=' + grafica.gioco.score;

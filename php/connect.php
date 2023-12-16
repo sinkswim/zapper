@@ -10,7 +10,7 @@
 	// Check connection
 	if ($mysqli_connection -> connect_error) {
 		echo "Failed to connect to MySQL: " . $mysqli_connection -> connect_error;
+		die("Connection failed: " . $mysqli_connection->connect_error);
 		exit();
   	}
-  
 ?>
