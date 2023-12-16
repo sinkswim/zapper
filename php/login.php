@@ -13,14 +13,14 @@
 	if ($result->num_rows == 1) {
 	  while($row = $result->fetch_assoc()) {
 		session_start();
-		$_SESSION["username"]=$_POST["username"]; //variabile di sessione
-		header('Location: game.php'); 						//reindirizzamento al pagina di gioco
+		$_SESSION["username"]=$_POST["username"];	// Set username session variable, will be used to update score
+		header('Location: game.php');				// Go to game page to start playing
 	  }
 	} else {
 		echo ('<div>Incorrect username or password, <a href="../index.php">try again</a>!</div>');
 	}
 	
-	// $mysqli_connection->close();
+	$mysqli_connection->close();
 ?> 
 		
 </body>

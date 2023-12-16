@@ -5,7 +5,7 @@
 	<title> Logout! </title>
 <?php
 	include 'header.php';
-	session_start();	/*TODO is this necessary? */
+	session_start();
 	session_destroy();
 ?> 
 		

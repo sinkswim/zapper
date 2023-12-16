@@ -23,7 +23,8 @@
 	}
 	echo "</p>";
 	echo "<h2>Your personal record is: $row[0] </h2>";
-
+	
+	$mysqli_connection->close();
 ?>
 
 	<div>
