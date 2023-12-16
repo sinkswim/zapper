@@ -41,9 +41,9 @@
       echo ('Creating user...');
       $insertUserQuery = "INSERT into users VALUES ('".$_POST['username']."', '".$_POST['password']."', '".'0'."')";
       if ($mysqli_connection->query($insertUserQuery) === TRUE) {
-         echo "New record created successfully";   /* TODO notify user successful user creation */
+         echo "New user created successfully";
        } else {
-         echo "Error: " . $insertUserQuery . "<br>" . $mysqli_connection->error;
+         echo "Error creating user: " . $insertUserQuery . "<br>" . $mysqli_connection->error;
        }
       header('Location: ../index.php'); // Go back to home page
       }

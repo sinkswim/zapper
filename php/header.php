@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<div><img  class="logo" src="../media/zapper_logo.png" alt="Zapper Logo" ></div>
+	<div><a href="../index.php"><img  class="logo" src="../media/zapper_logo.png" alt="Zapper Logo" ></a></div>
 	<table class="linkbar">
 		<tr> <td> <a href="../index.php" > home </a> </td>
 			 <td> <a href="../html/about.html"> about </a> </td>

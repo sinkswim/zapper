@@ -53,12 +53,10 @@ function Grafica(){		//livello logico di grafica
 	this.contaChiamate = 0;
 	this.contaEnemyInMov = 0;
 	//tempo di ritardo tra un enemy e un altro e' tempoRender (fisso) + tempo casuale
-	// this.maxIntervNextEnemy = [5000, 4000, 2000, 2000, 2000, 2000, 1200]; 
-	this.maxIntervNextEnemy = [2000, 4000, 2000, 2000, 2000, 2000, 1200]; 
+	this.maxIntervNextEnemy = [4000, 3000, 2000, 1750, 1500, 1250, 1000]; 
 
 	this.tempoRender = 50;
-	//this.passo = [10, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
-	this.passo = [20, 10 , 12 , 12 , 12 , 12 , 13 ];	//passo di movimento del nemico
+	this.passo = [10, 12, 13, 14, 15, 17, 20];	//passo di movimento del nemico
 	this.tempoExplode = 165;
 	
 	for (var i=0; i<this.gioco.numEnemy; i++){		//inserisci nello sfondo di gioco i nemici
@@ -85,8 +83,7 @@ function Gioco(){	//livello logico di gioco vero e proprio
 	
 	this.vetEnemy = null;
 	this.numEnemy = 0;
-	// this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
-	this.vetNumEnemy = [2,10,15,20,25,30,35];	//quanti nemici per ogni livello
+	this.vetNumEnemy = [5,10,15,20,25,30,35];	//quanti nemici per ogni livello
 
 	this.fuoriGioco = 0; //numero di nemici ormai fuori gioco
 	

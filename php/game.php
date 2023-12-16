@@ -19,7 +19,7 @@
 </head>
 
 <body onload="inizializza();">
-	<div> <img class="logo" src="../media/zapper_logo.png"alt="Zapper Logo"> </div>
+	<div><a href="../index.php"><img class="logo" src="../media/zapper_logo.png"alt="Zapper Logo"></a></div>
 	<div>
 	<table class="linkbar">
 		<tr> <td valign="top"> <a href="../index.php" > home </a> </td>

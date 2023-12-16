@@ -12,7 +12,7 @@
 </head>
 
 <body>
-		 <div><img  class="logo" src="./media/zapper_logo.png" alt="Zapper Logo" ></div>
+		 <div><a href="./index.php"><img  class="logo" src="./media/zapper_logo.png" alt="Zapper Logo" ></a></div>
 		 		<table class="linkbar">
 					<tr> <td> <a href="./index.php" > home </a>
 					</td>
@@ -23,19 +23,25 @@
 		<p>
 			Save your planet from the alien invasion! Login or register now:
 		</p>
-		
-		<form action="./php/login.php" method="post">
-			<div class=login>
-			<h3>Log in</h3>
-			<div>Username: <input type="text" name="username"></div>
-			<div>Password: <input type="password" name="password"></div>
-			<input type="submit" value="Log in">
-			</div>	
-		</form>
-		<div class=register> 
-			<h4>Click the button below to register your account </h4>
-			<input type="button" onClick="location.href='./php/registrazione.php'" value='Sign up'>
-		</div>
+
+
+    <!-- Your HTML code here -->
+    <form action="./php/login.php" method="post">
+        <div class=login>
+        <h3>Log in</h3>
+        <div>Username: <input type="text" name="username"></div>
+        <div>Password: <input type="password" name="password"></div>
+        <input type="submit" value="Log in">
+        </div>  
+    </form>
+    <div class=register> 
+        <h4>Click the button below to register your account </h4>
+        <input type="button" onClick="location.href='./php/registrazione.php'" value='Sign up'>
+    </div>
+
+
+
+
 	
 </body>
 </html>
